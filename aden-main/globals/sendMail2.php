@@ -11,7 +11,7 @@ class SendMail {
                 "sendToEmail" => $email,
                 "sendToName" => $name,
                 "emailSubjectLine" => "Welcome to My Application",
-                "emailMessage" => "Welcome to My Application! Thank you for joining us."
+                "emailMessage" => "Welcome '$name' to My Application! Thank you for joining us."
             );
 
             // Configuration
