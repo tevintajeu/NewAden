@@ -38,9 +38,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(60) NOT NULL DEFAULT '',
   `token` varchar(50) NOT NULL DEFAULT '',
   `token_expire` datetime NOT NULL DEFAULT current_timestamp(),
+  `subscribed` TINYINT(1) DEFAULT 0, -- 1 for subscribed, 0 for unsubscribed
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   PRIMARY KEY (`userId`),
   UNIQUE KEY `email_address` (`email_address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 --
 -- Truncate table before insert `users`

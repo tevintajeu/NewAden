@@ -1,6 +1,6 @@
 <?php
 class SendMail {
-    public function sendWelcomeEmail($email, $name) {
+    public function sendWelcomeEmail($email, $name, $subscribed) {//the subscribed parameter indicates whether  the user has subscribed to receiving notifications
         // Replace with your SendGrid API key
         $sendgrid_api_key = 'YOUR_SENDGRID_API_KEY';
 
@@ -10,9 +10,19 @@ class SendMail {
             $emailDetails = array(
                 "sendToEmail" => $email,
                 "sendToName" => $name,
-                "emailSubjectLine" => "Welcome to My Application",
-                "emailMessage" => "Welcome ".$name." to My Application! Thank you for joining us."
-            );
+                "emailSubjectLine" => "Welcome to My Application, $name", //adds user's name to the subjectline and emailMessage
+                "emailMessage" => "Welcome $name to My Application! Thank you for joining us. <br><br>Click here to view your profile: <a href='https://example.com/profile/{$details["sendToEmail"]}'>https://example.com/profile/{$details["sendToEmail"]}</a>"
+                 //above, allows the user to view their profile by clicking on the link
+            
+                );
+            //Customize email message based on subscription status
+            if($subscribed){
+                $emailSubjectLine .="(Subscribed)";
+                $emailMessage .= "Thank you for subscribing to our notifications and updates."
+            }else{
+                $emailSubjectLine .="(Unsubscribed)";
+                $emailMessage .= "You have opted out of receiving notifications and updates."
+            }
 
             // Configuration
             $config = array(
@@ -52,8 +62,8 @@ class SendMail {
                 "subject" => $details["emailSubjectLine"],
                 "content" => array(
                     array(
-                        "type" => "text/html",
-                        "value" => nl2br($details["emailMessage"])
+                        "type" => "text/html", 
+                        "value" => nl2br($details["emailMessage"]). 
                     )
                 )
             );
@@ -83,5 +93,6 @@ class SendMail {
 $mailer = new SendMail();
 $email = "user@example.com"; // Replace with the user's email address
 $name = "User Name"; // Replace with the user's name
-$mailer->sendWelcomeEmail($email, $name);
+$subscribed= true;
+$mailer->sendWelcomeEmail($email, $name,$subscribed);
 ?>
