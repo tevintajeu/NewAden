@@ -10,18 +10,18 @@ class SendMail {
             $emailDetails = array(
                 "sendToEmail" => $email,
                 "sendToName" => $name,
-                "emailSubjectLine" => "Welcome to My Application, $name", //adds user's name to the subjectline and emailMessage
-                "emailMessage" => "Welcome $name to My Application! Thank you for joining us. <br><br>Click here to view your profile: <a href='https://example.com/profile/{$details["sendToEmail"]}'>https://example.com/profile/{$details["sendToEmail"]}</a>"
+                "emailSubjectLine" => "Welcome to My Application, $name" //adds user's name to the subjectline and emailMessage
+                //"emailMessage" => "Welcome $name to My Application! Thank you for joining us. <br><br>Click here to view your profile: <a href='https://example.com/profile/{$details["sendToEmail"]}'>https://example.com/profile/{$details["sendToEmail"]}</a>"
                  //above, allows the user to view their profile by clicking on the link
             
                 );
             //Customize email message based on subscription status
             if($subscribed){
                 $emailSubjectLine .="(Subscribed)";
-                $emailMessage .= "Thank you for subscribing to our notifications and updates."
+                $emailMessage .= "Thank you for subscribing to our notifications and updates.";
             }else{
                 $emailSubjectLine .="(Unsubscribed)";
-                $emailMessage .= "You have opted out of receiving notifications and updates."
+                $emailMessage .= "You have opted out of receiving notifications and updates.";
             }
 
             // Configuration
@@ -44,7 +44,7 @@ class SendMail {
                 'Content-Type: application/json'
             );
 
-            $data = array(
+            $data = [
                 "personalizations" => array(
                     array(
                         "to" => array(
@@ -60,13 +60,13 @@ class SendMail {
                     "name" => $conf["site_name"]
                 ),
                 "subject" => $details["emailSubjectLine"],
-                "content" => array(
+                "content" => [
                     array(
                         "type" => "text/html", 
-                        "value" => nl2br($details["emailMessage"]). 
+                        "value" => nl2br($details["emailMessage"])
                     )
-                )
-            );
+                ]
+            ];
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/v3/mail/send");
@@ -89,10 +89,10 @@ class SendMail {
     }
 }
 
-// Example usage:
-$mailer = new SendMail();
-$email = "user@example.com"; // Replace with the user's email address
-$name = "User Name"; // Replace with the user's name
-$subscribed= true;
-$mailer->sendWelcomeEmail($email, $name,$subscribed);
+// // Example usage:
+// $mailer = new SendMail();
+// $email = "user@example.com"; // Replace with the user's email address
+// $name = "User Name"; // Replace with the user's name
+// $subscribed= true;
+// $mailer->sendWelcomeEmail($email, $name,$subscribed);
 ?>
