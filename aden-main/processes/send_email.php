@@ -16,6 +16,7 @@ require '../vendor/autoload.php';
 
 
 $email_address = $_POST["email_address"];
+$user_email =$_POST["email_address"];
 $token = md5(time());
 $token_expire = date("Y-m-d H:i:s", strtotime("+ 2hours"));
 
@@ -26,7 +27,7 @@ function bind_to_template($replacements, $template){
     }, $template);
 }
 
-function sendemail_verify($email_address,$token){
+function sendemail_verify($email_address,$token,$user_email){
     $mail = new PHPMailer(true);
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
     $mail->isSMTP();                                            
@@ -44,12 +45,16 @@ function sendemail_verify($email_address,$token){
     $mail->Subject = "ics 2.2 Email account verifiaction ";
 
     $email_template = "
-    <h2> hi, you have registered with ics 2.2</h2>
-    <h5>verify your email address to login with the below given link </h5>
+    <h2> hi $user_email, you have registered with ics 2.2</h2>
+    <h5>Verify your email address to login with the below given link </h5>
     <br>
     <a href='http://localhost/aden-main/processes/verify_email.php?token=$token''>click here</a>";
 
-    $mail->Body = $email_template;
+    $replacements = [
+        'user_email' => $user_email,
+    ];
+
+    $mail->Body = bind_to_template($email_template, $replacements);
     $mail-> send();
 
    
@@ -73,7 +78,7 @@ if (mysqli_num_rows($check_email_query_RUN) > 0) {
 
 
     if ($query_run) {
-        sendemail_verify("$email_address","$token");
+        sendemail_verify("$email_address","$token","$user_email"); //Passing user email to the function
         $_SESSION['status'] = "registration successfull. now verify your email";
         header("location:../signup.php");
 
