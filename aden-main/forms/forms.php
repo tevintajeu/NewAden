@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+   session_start();
+}
+
 class forms
 {
    public function sign_in_form()
@@ -8,6 +11,13 @@ class forms
       <div class="row align-items-md-stretch">
          <div class="col-md-6">
             <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+               <?php
+               if (isset($_SESSION['status'])) {
+                  echo "<h4>" . $_SESSION['status'] . "</h4>";
+                  unset($_SESSION['status']);
+               }
+               ;
+               ?>
                <form action="" method="POST">
                   <div class="mb-3">
                      <label for="exampleInputEmail1">Email address</label>
@@ -45,18 +55,26 @@ class forms
       <div class="row align-items-md-stretch">
          <div class="col-md-6">
             <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-               <?php 
-               if (isset($_SESSION['status']))
-               {
-                  echo "<h4>".$_SESSION['status']."</h4>";
+               <?php
+               if (isset($_SESSION['status'])) {
+                  echo "<h4>" . $_SESSION['status'] . "</h4>";
                   unset($_SESSION['status']);
-               };
+               }
+               ;
                ?>
-               <form action="processes/send_email.php" method="POST">
+               <form action="globals/send_email.php" method="POST">
                   <div class="mb-3 form-group">
+                     <label for="exampleInputEmail1">Names</label>
+                     <input type="text" name="usernames" class="form-control" id="exampleInputEmail1" placeholder="Names">
                      <label for="exampleInputEmail1">Email address</label>
                      <input type="email" name="email_address" class="form-control" id="exampleInputEmail1"
                         aria-describedby="emailHelp" placeholder="Enter email">
+                     <label for="exampleInputEmail1">Password</label>
+                     <input type="password" name="password" class="form-control" id="exampleInputEmail1"
+                        placeholder="enter password">
+                     <label for="exampleInputEmail1">Confirm Password</label>
+                     <input type="password" name="confpassword" class="form-control " id="exampleInputEmail1"
+                        placeholder="confirm password">
                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
                   <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>

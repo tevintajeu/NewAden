@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2023 at 01:11 AM
+-- Generation Time: Sep 23, 2023 at 07:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -31,7 +31,7 @@ CREATE TABLE `users` (
   `userId` bigint(10) NOT NULL,
   `username` varchar(50) NOT NULL DEFAULT '',
   `email_address` varchar(50) NOT NULL DEFAULT '',
-  `password` varchar(60) NOT NULL DEFAULT '',
+  `password` varchar(70) NOT NULL,
   `token` varchar(50) NOT NULL DEFAULT '',
   `verify_status` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0 = no, 1 = yes',
   `token_expire` datetime NOT NULL DEFAULT current_timestamp()
@@ -42,7 +42,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `username`, `email_address`, `password`, `token`, `verify_status`, `token_expire`) VALUES
-(23, '', 'tevot191030@gmail.com', '', 'a387b23f769c3a58d55e56ccc641dec7', 1, '2023-09-22 04:09:17');
+(43, '', 'tevot191030@gmail.com', '', '7a00fd20c243ff27e8ca0074edc19e44', 1, '2023-09-23 19:42:13');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +63,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `userId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
