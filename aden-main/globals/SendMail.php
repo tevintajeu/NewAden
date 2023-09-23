@@ -87,6 +87,10 @@ class SendMail {
             echo "Error: Some details are missing.";
         }
     }
+
+    header("Location: ./signin.php");
+    exit; 
+
 }
 
 // // Example usage:
