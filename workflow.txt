@@ -1,0 +1,5 @@
+git clone https://github.com/tevintajeu/NewAden.git
+git config  user.email "ephraim.juma@strathmore.edu"
+git config  user.name "ephraimjuma"
+git commit -m "SendMail"
+git push -u origin main
