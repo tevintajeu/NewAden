@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `users`
 --
-CREATE IF NOT EXISTS DATABASE aden;
+CREATE DATABASE IF NOT EXISTS aden;
 USE aden;
 
 CREATE TABLE `users` (
