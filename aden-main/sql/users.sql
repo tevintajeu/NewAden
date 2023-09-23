@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `users`
 --
+CREATE IF NOT EXISTS DATABASE aden;
+USE aden;
 
 CREATE TABLE `users` (
   `userId` bigint(10) NOT NULL,
