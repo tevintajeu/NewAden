@@ -34,6 +34,7 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL DEFAULT '',
   `email_address` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(60) NOT NULL DEFAULT '',
+  `location` varchar(60) NOT NULL DEFAULT '',
   `token` varchar(50) NOT NULL DEFAULT '',
   `verify_status` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0 = no, 1 = yes',
   `token_expire` datetime NOT NULL DEFAULT current_timestamp()

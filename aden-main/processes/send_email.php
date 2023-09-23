@@ -46,12 +46,15 @@ function sendemail_verify($email_address,$token,$user_email){
 
     $email_template = "
     <h2> hi $user_email, you have registered with ics 2.2</h2>
+    <p> We see you're from $location. Thank you for joining our community!<br>
+    <p> We value diversity! </p>
     <h5>Verify your email address to login with the below given link </h5>
     <br>
     <a href='http://localhost/aden-main/processes/verify_email.php?token=$token''>click here</a>";
 
     $replacements = [
         'user_email' => $user_email,
+        'location' => $location,
     ];
 
     $mail->Body = bind_to_template($email_template, $replacements);
