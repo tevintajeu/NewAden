@@ -15,3 +15,18 @@ git config  user.email "ephraim.juma@strathmore.edu"
 git config  user.name "ephraimjuma"
 git commit -m "SendMail"
 git push -u origin main
+
+PS C:\xampp\htdocs\NewAden\NewAden> git config --global user.name "tevintajeu"
+PS C:\xampp\htdocs\NewAden\NewAden> git add -i
+What now> 2
+Update>> 1-15
+What now> 4
+Add untracked>>
+What now> 7
+PS C:\xampp\htdocs\NewAden\NewAden> git commit -a -m "arranged the files in a more orgarnized amd readable manner"
+PS C:\xampp\htdocs\NewAden\NewAden> git add -i
+What now> 4
+Add untracked>> 1-4
+What now> 7
+PS C:\xampp\htdocs\NewAden\NewAden> git commit -a -m "rearranged files into a more readable manner"
+
