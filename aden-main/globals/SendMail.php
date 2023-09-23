@@ -88,8 +88,7 @@ class SendMail {
         }
     }
 
-    header("Location: ./signin.php");
-    exit; 
+
 
 }
 
@@ -99,4 +98,13 @@ class SendMail {
 // $name = "User Name"; // Replace with the user's name
 // $subscribed= true;
 // $mailer->sendWelcomeEmail($email, $name,$subscribed);
+
+
+/*if ($mailer->sendWelcomeEmail($email, $name, $subscribed)) {
+    // Redirect to signin.php after sending the email
+    header("Location: ./signin.php");
+    exit;
+} else {
+    echo "Failed to send the email. Please try again later.";
+}*/
 ?>
