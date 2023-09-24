@@ -1,0 +1,17 @@
+Group members
+-------------
+part 1:
+151105-Waheho Ellyjoy Wairumu
+151166-Ephraim Loch Juma
+151785-Tajeu Tevin Ntapaiya
+part 2:
+151392-Agil Fatma Salim
+150473-Mwangi Natalia Mary Wambui
+151091-Mwoma Zandy Aimie
+
+
+git clone https://github.com/tevintajeu/NewAden.git
+git config  user.email "ephraim.juma@strathmore.edu"
+git config  user.name "ephraimjuma"
+git commit -m "SendMail"
+git push -u origin main

@@ -26,12 +26,14 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `users`
 --
+CREATE DATABASE IF NOT EXISTS aden;
+USE aden;
 
 CREATE TABLE `users` (
   `userId` bigint(10) NOT NULL,
   `username` varchar(50) NOT NULL DEFAULT '',
   `email_address` varchar(50) NOT NULL DEFAULT '',
-  `password` varchar(70) NOT NULL,
+  `password` varchar(60) NOT NULL DEFAULT '',
   `token` varchar(50) NOT NULL DEFAULT '',
   `verify_status` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0 = no, 1 = yes',
   `token_expire` datetime NOT NULL DEFAULT current_timestamp()
